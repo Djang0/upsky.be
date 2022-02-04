@@ -295,8 +295,7 @@ body {
 }
 
 h1 {
-  /* Extra small devices (phones, less than 768px) */
-  font-size: 10px;
+
 
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) {
