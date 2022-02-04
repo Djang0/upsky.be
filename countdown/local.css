@@ -296,7 +296,7 @@ body {
 
 h1 {
 
-
+font-size: 60px;
   /* Small devices (tablets, 768px and up) */
   @media (min-width: 768px) {
     font-size: 60px;
