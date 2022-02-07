@@ -282,7 +282,10 @@ body {
     color: white;
     margin-top: 4em;
 }
+.title_under {
+    color: white;
 
+}
 .box_textshadow {
     text-shadow: 2px 2px 0px black;
     /* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
@@ -290,6 +293,9 @@ body {
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 570px) and (-webkit-min-device-pixel-ratio: 2) {
     .title{
+        margin-top: 0em;
+    }
+    .title_under{
         margin-top: 0em;
     }
 }
