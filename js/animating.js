@@ -143,23 +143,20 @@ var PageTransitions = (function ($, options) {
     }
 
     var href = $('.ajax-page-load').each(function () {
+      alert('go')
       href = $(this).attr('href');
-
-
-      var toLoad = $(this).attr('href');
-      showContent();
-      ajaxLoadedContent.load(toLoad);
-
-
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
-        alert('go');
+        var toLoad = $(this).attr('href');
+        showContent();
+        ajaxLoadedContent.load(toLoad);
+        return false;
       }
-      return false;
     });
 
     $(document)
       .on("click", ".main-menu, #ajax-page-close-button", function (e) { // Hide Ajax Loaded Page on Navigation cleck and Close button
         e.preventDefault();
+        alert('close')
         hideContent();
         location.hash = location.hash.split('/')[0];
       })
@@ -167,7 +164,7 @@ var PageTransitions = (function ($, options) {
         var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0, $(this).attr('href').length - 5);
         location.hash = hash;
         showContent();
-
+        alert('load');
         return false;
       });
   }
