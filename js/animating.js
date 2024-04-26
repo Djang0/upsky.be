@@ -5,7 +5,7 @@
  * Version: 1.3.0
  */
 
-var PageTransitions = (function($, options) {
+var PageTransitions = (function ($, options) {
   "use strict";
   var sectionsContainer = $(".animated-sections"),
     isAnimating = false,
@@ -28,20 +28,20 @@ var PageTransitions = (function($, options) {
   function init(options) {
 
     // Get all the .animated-section sections.
-    $('.animated-section').each(function() {
+    $('.animated-section').each(function () {
       var $page = $(this);
       $page.data('originalClassList', $page.attr('class'));
     });
 
     // Get all the .pt-wrapper div which is the parent for all pt-div
-    sectionsContainer.each(function() {
+    sectionsContainer.each(function () {
       if (location.hash === "") {
         $('section[data-id=' + pageStart + ']').addClass('section-active');
       }
     });
 
     // Adding click event to main menu link
-    $('.nav-anim').on("click", function(e) {
+    $('.nav-anim').on("click", function (e) {
       e.preventDefault();
       if (isAnimating) {
         return false;
@@ -56,7 +56,7 @@ var PageTransitions = (function($, options) {
 
     });
 
-    window.onhashchange = function(event) {
+    window.onhashchange = function (event) {
       if (location.hash) {
         if (isAnimating) {
           return false;
@@ -82,7 +82,7 @@ var PageTransitions = (function($, options) {
     $('body').append('<div id="page-ajax-loaded" class="page-ajax-loaded animated animated-section-moveFromLeft"></div>');
     ajaxLoader();
 
-    $(".lmpixels-arrow-right").click(function() {
+    $(".lmpixels-arrow-right").click(function () {
       var activeItem = $('.main-menu a.active').parent("li");
       activeItem.next("li").children("a").click();
       if (activeItem.is(':last-child')) {
@@ -91,7 +91,7 @@ var PageTransitions = (function($, options) {
       }
     });
 
-    $(".lmpixels-arrow-left").click(function() {
+    $(".lmpixels-arrow-left").click(function () {
       var activeItem = $('.main-menu a.active').parent("li");
       activeItem.prev("li").children("a").click();
       if (activeItem.is(':first-child')) {
@@ -136,29 +136,34 @@ var PageTransitions = (function($, options) {
     function hideContent() {
       $('#page-ajax-loaded').addClass('animated-section-moveToRight closed');
       $('body').removeClass('ajax-page-visible');
-      setTimeout(function() {
+      setTimeout(function () {
         $('#page-ajax-loaded.closed').html('');
         ajaxLoadedContent.hide();
       }, 500);
     }
 
-    var href = $('.ajax-page-load').each(function() {
+    var href = $('.ajax-page-load').each(function () {
       href = $(this).attr('href');
+
+
+      var toLoad = $(this).attr('href');
+      showContent();
+      ajaxLoadedContent.load(toLoad);
+
+
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
-        var toLoad = $(this).attr('href');
-        showContent();
-        ajaxLoadedContent.load(toLoad);
-        return false;
+        alert('go');
       }
+      return false;
     });
 
     $(document)
-      .on("click", ".main-menu, #ajax-page-close-button", function(e) { // Hide Ajax Loaded Page on Navigation cleck and Close button
+      .on("click", ".main-menu, #ajax-page-close-button", function (e) { // Hide Ajax Loaded Page on Navigation cleck and Close button
         e.preventDefault();
         hideContent();
         location.hash = location.hash.split('/')[0];
       })
-      .on("click", ".ajax-page-load", function() { // Show Ajax Loaded Page
+      .on("click", ".ajax-page-load", function () { // Show Ajax Loaded Page
         var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0, $(this).attr('href').length - 5);
         location.hash = hash;
         showContent();
@@ -491,7 +496,7 @@ var PageTransitions = (function($, options) {
 
       $nextPage.scrollTop(0);
 
-      $currentPage.addClass(outClass).on(animEndEventName, function() {
+      $currentPage.addClass(outClass).on(animEndEventName, function () {
         $currentPage.off(animEndEventName);
         endCurrentPage = true;
         if (endNextPage) {
@@ -500,7 +505,7 @@ var PageTransitions = (function($, options) {
         }
       });
 
-      $nextPage.addClass(inClass).on(animEndEventName, function() {
+      $nextPage.addClass(inClass).on(animEndEventName, function () {
         $nextPage.off(animEndEventName);
         endNextPage = true;
         if (endCurrentPage) {
