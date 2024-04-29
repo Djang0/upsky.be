@@ -139,6 +139,7 @@ var PageTransitions = (function ($, options) {
 
         if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
           var toLoad = $(this).attr('href');
+          console.log('to load1: ' + toLoad);
           ajaxLoadedContent.load(toLoad);
           return false;
         }
@@ -159,8 +160,10 @@ var PageTransitions = (function ($, options) {
       href = $(this).attr('href');
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
         var toLoad = $(this).attr('href');
+        console.log('to load2: ' + toLoad);
         showContent();
         ajaxLoadedContent.load(toLoad);
+        console.log('to load3: ' + toLoad);
         return false;
       }
     });
