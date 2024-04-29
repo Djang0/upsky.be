@@ -131,8 +131,20 @@ var PageTransitions = (function ($, options) {
       console.log('show')
       ajaxLoadedContent.removeClass('animated-section-moveToRight closed');
       ajaxLoadedContent.show();
-
       $('body').addClass('ajax-page-visible');
+      $('.ajax-page-load').each(function () {
+
+        href = $(this).attr('href');
+        console.log('bind3 ' + href)
+        if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
+          var toLoad = $(this).attr('href');
+
+          showContent();
+          ajaxLoadedContent.load(toLoad);
+
+          return false;
+        }
+      })
     }
 
     function hideContent() {
