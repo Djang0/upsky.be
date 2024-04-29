@@ -128,7 +128,7 @@ var PageTransitions = (function ($, options) {
     var ajaxLoadedContent = $('#page-ajax-loaded');
 
     function showContent() {
-      console.log('show')
+
       ajaxLoadedContent.removeClass('animated-section-moveToRight closed');
       ajaxLoadedContent.show();
       $('body').addClass('ajax-page-visible');
@@ -147,7 +147,7 @@ var PageTransitions = (function ($, options) {
     var href = $('.ajax-page-load').each(function () {
 
       href = $(this).attr('href');
-      console.log('bind ' + href)
+
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
         var toLoad = $(this).attr('href');
 
@@ -169,7 +169,7 @@ var PageTransitions = (function ($, options) {
 
         var hreff = $(this).attr('href')
         var hash = location.hash.split('/')[0] + '/' + hreff.substr(0, hreff.length - 5);
-        console.log('bind2 ' + hreff)
+
 
         location.hash = hash;
         showContent();
