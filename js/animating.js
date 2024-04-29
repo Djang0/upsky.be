@@ -145,8 +145,9 @@ var PageTransitions = (function ($, options) {
     }
 
     var href = $('.ajax-page-load').each(function () {
-      console.log('bind')
+
       href = $(this).attr('href');
+      console.log('bind ' + href)
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
         var toLoad = $(this).attr('href');
 
