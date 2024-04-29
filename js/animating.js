@@ -128,19 +128,17 @@ var PageTransitions = (function ($, options) {
     var ajaxLoadedContent = $('#page-ajax-loaded');
 
     function showContent() {
-      console.log('show content');
+
       ajaxLoadedContent.removeClass('animated-section-moveToRight closed');
       ajaxLoadedContent.show();
-      console.log('shown');
+
       $('body').addClass('ajax-page-visible');
       var href = $('.ajax-page-load').each(function () {
 
         href = $(this).attr('href');
-
+        console.log(href + '//' + $(this).attr('id'))
         if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
           var toLoad = $(this).attr('href');
-          console.log($(this))
-          console.log('to load1: ' + toLoad);
           ajaxLoadedContent.load(toLoad);
           return false;
         }
@@ -161,10 +159,10 @@ var PageTransitions = (function ($, options) {
       href = $(this).attr('href');
       if (location.hash == location.hash.split('/')[0] + '/' + href.substr(0, href.length - 5)) {
         var toLoad = $(this).attr('href');
-        console.log('to load2: ' + toLoad);
+
         showContent();
         ajaxLoadedContent.load(toLoad);
-        console.log('to load3: ' + toLoad);
+
         return false;
       }
     });
@@ -178,7 +176,6 @@ var PageTransitions = (function ($, options) {
       })
       .on("click", ".ajax-page-load", function () { // Show Ajax Loaded Page
         var hash = location.hash.split('/')[0] + '/' + $(this).attr('href').substr(0, $(this).attr('href').length - 5);
-        console.log(hash);
         location.hash = hash;
         showContent();
 
